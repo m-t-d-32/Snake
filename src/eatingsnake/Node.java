@@ -61,8 +61,4 @@ public class Node {
 	{
 		g.fillRect(x, y,size,size);
 	}
-	public static void main(String[] args)
-	{
-
-	}
 }

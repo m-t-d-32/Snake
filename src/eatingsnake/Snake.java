@@ -66,14 +66,10 @@ public class Snake {
 		nodes.set(0, head);
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
 class View extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	Snake snake;
 	Food food;
 	public View(Snake snake,Food food)

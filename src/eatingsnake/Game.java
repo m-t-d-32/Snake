@@ -18,7 +18,7 @@ public class Game {
 	private Snake snake=new Snake(size);
 	private JFrame frame=new JFrame();
 	private View view=new View(snake,food);
-	private String lasttime="up";
+	private String lasttime="right";
 	private int score=0;
 	private HashMap<Integer, String> key=new HashMap<Integer,String>();
 	private HashMap<String,String> checklast=new HashMap<String, String>();
@@ -36,10 +36,10 @@ public class Game {
 		Node node2=new Node(node1.getX()+20,node1.getY(),size);
 		Node node3=new Node(node1.getX(),node1.getY()+20,size);
 		Node node4=new Node(node1.getX()+20,node1.getY()+20,size);
+		snake.add(node4);
+		snake.add(node3);
 		snake.add(node1);
 		snake.add(node2);
-		snake.add(node3);
-		snake.add(node4);
 		createFood();
 		frame.setTitle("Ã∞≥‘…ﬂ");
 		frame.setBounds(400,100, maxX,maxY);
@@ -47,24 +47,19 @@ public class Game {
 		frame.addKeyListener(new KeyListener() {
 			
 			@Override
-			public void keyTyped(KeyEvent e) {
-
-			}
+			public void keyTyped(KeyEvent e) {}
 			
 			
 			@Override
-			public void keyReleased(KeyEvent e) {
-				
-				
-			}
+			public void keyReleased(KeyEvent e) {}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
-				if (checklast.get(key.get(e.getExtendedKeyCode()))!=lasttime && key.get(e.getExtendedKeyCode())!=lasttime)
+				int keycode = e.getExtendedKeyCode();
+				if (key.containsKey(keycode) && checklast.get(key.get(keycode))!=lasttime && key.get(keycode)!=lasttime)
 				{
-					doMove(key.get(e.getExtendedKeyCode()));
-					lasttime=key.get(e.getExtendedKeyCode());
+					doMove(key.get(keycode));
+					lasttime=key.get(keycode);
 				}
 			}
 		});
@@ -113,7 +108,7 @@ public class Game {
 	{
 		while (true)
 		{
-			Thread.sleep(200);
+			Thread.sleep(300);
 			doMove(lasttime);
 			if (judgedie())
 			{
@@ -149,5 +144,4 @@ public class Game {
 		Game game=new Game();
 		game.play();
 	}
-
 }

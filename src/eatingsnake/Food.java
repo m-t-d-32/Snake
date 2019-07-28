@@ -30,9 +30,4 @@ public class Food {
 	{
 		node=new Node(((int)(Math.random()*maxX))/size*size,((int)(Math.random()*maxY))/size*size,size);
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
